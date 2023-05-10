@@ -1,0 +1,23 @@
+# 利用するdocker-comnposeのバージョン
+version: '3.8'
+
+# アプリケーションで動かすための各要素
+services:
+  # コンテナ名
+  memory:
+    # 起動するコンテナの設定
+    build:
+      # ディレクトリの指定
+      context: .
+    # ディレクトリのマウントの設定、:前がホストのディレクトリ、:後がコンテナのディレクトリ
+    volumes:
+      - ./:/usr/src/app
+
+    # Dockerコンテナ内で実行されるコマンドを指定する
+    command: sh -c 'cd memory && npm start'
+    
+    # ポート設定、:前がホスト側のポート、:あとがコンテナ側のポート
+    ports:
+      - "3000:3000"
+
+    tty: true
