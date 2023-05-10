@@ -2,7 +2,7 @@ import React from 'react'
 
 const Memory = ({memory}) => {
   return (
-    <div>{memory.name}  {memory.memo}</div>
+    <div>タイトル：{memory.name}  概要：{memory.memo}</div>
   )
 }
 
