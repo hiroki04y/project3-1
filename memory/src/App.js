@@ -10,59 +10,72 @@ const getItem = () => {
   }
 }
 
-//アイテムを取得
-const getClick = () => {
-  getItem();
-};
 
 //最初にすべてのタスクを読み込む
 window.onload = function() {
   getItem();
 };
 
-//ランダムな値を生成
-function getRandomStr(){
-  const LENGTH = 8 //生成したい文字列の長さ
-  const SOURCE = "abcdefghijklmnopqrstuvwxyz0123456789" //元になる文字
-  let result = ''
-
-  for(let i=0; i<LENGTH; i++){
-    result += SOURCE[Math.floor(Math.random() * SOURCE.length)];
-  }
-  
-  return result //p9zh1ziw
-}
 
 function App() {
+  //表示用の配列を宣言
   const [mems, setMems] = useState([
   ]);
 
+  //表示内容を表示用配列に追加
   useEffect(() => {
     let tmp = [];
     for (let i = 0, length = localStorage.length; i < length; ++i) {
       let key = localStorage.key(i)
-      let memname = localStorage.getItem(key)
-      tmp.push({id: key, name: memname});
+      let itemJson = JSON.parse(localStorage.getItem(key));
+      let name = itemJson.name;
+      let memo = itemJson.memo;
+      let date = itemJson.now;
+      tmp.push({id: key, name: name, memo: memo, date:date});
     }
-    setMems(tmp);
+    let result = tmp.sort(function(a, b) {
+      return (a.date < b.date) ? -1 : 1;  //オブジェクトの昇順ソート
+    });
+    setMems(result);
   }, []);
 
 
   //要素を取得
-  const memNameRef = useRef();
+  const titleNameRef = useRef();
+  const memoNameRef = useRef();
+  //追加ボタンを押された時の処理
   const handleAddTodo = () =>{
-    //memsを追加する
-    const name = memNameRef.current.value;
+    //テキストエリアの値を取得
+    const name = titleNameRef.current.value;
+    const memo = memoNameRef.current.value;
+    var uid = uuidv4();
+    var now = new Date();
+
+    //memsに値をセットする(ホットリロード)
     setMems((prevMems) => {
-      return [...prevMems, {id: uuidv4(), name: name}];
-    })
+      return [...prevMems, {id: uid, name: name, memo: memo, now: now}];
+    });
+
+    //取得したデータをJSON形式に変換
+    const item = {
+      name: name,
+      memo: memo,
+      now: now,
+    };
+    const jsonString = JSON.stringify(item);
+
+    //JSON形式でローカルホストに変換してテキストフィールドを空にする
+    localStorage.setItem(uid, jsonString);
+    titleNameRef.current.value = null;
+    memoNameRef.current.value = null;
   }
 
   return (
     <div className="App">
       <header className="App-header">
         <MemList mems={mems} />
-        <input type="text" ref={memNameRef} />
+        <input type="text" ref={titleNameRef} />
+        <input type="textarea" ref={memoNameRef}/>
         <button onClick={handleAddTodo}>追加</button>
       </header>
     </div>
