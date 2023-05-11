@@ -78,8 +78,6 @@ function App() {
 
   return (
     <div className="App">
-      <button>作業中</button>
-      <button>学習成果</button>
       <header className="App-header">
         <MemList mems={mems} onDeleteMemory={handleDeleteMemory}/>
         <input type="text" ref={titleNameRef} />
