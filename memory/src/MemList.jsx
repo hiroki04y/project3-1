@@ -1,9 +1,22 @@
 // コンポーネント
 import React from 'react'
-import Memory from './Memory';
 
-const MemList = ({mems}) => {
-    return mems.map((memory) => <Memory memory={memory} key={memory.id} />);
+function MemList(props){
+    const { mems, onDeleteMemory } = props;
+
+    const handleDeleteClick = (item) => {
+        onDeleteMemory(item);
+    }
+
+    return (
+        <div>
+            {mems.map((mem) => (
+                <div key={mem.id}>
+                    <button onClick={() => handleDeleteClick(mem.id)}>削除</button><div>タイトル：{mem.name}  概要：{mem.memo}</div>
+                </div>
+            ))}
+        </div>
+    )
 }
 
 
