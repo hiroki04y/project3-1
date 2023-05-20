@@ -14,10 +14,14 @@ class Work extends React.Component {   //page2クラスにReact.Componentを継�
                 locales={[jaLocale]}
                 locale='ja'
                 headerToolbar={{                          // 追加
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek',
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek',
                 }}
+                events={[
+                    {title:'eventを', start: '2023-05-14'},
+                    {title:'こんな感じで追加できます', start: '2023-05-15', end: '2023-05-17'}
+                ]}
             />
             </div>
         );
