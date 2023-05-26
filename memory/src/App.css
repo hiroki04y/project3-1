@@ -1,15 +1,19 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 
-.App-header {
-  background-color: #b8c4dc;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.left{
+  min-height:100vh;
+  display:flex;
+  background-color:aqua;
+  width:15%;
+  float:left;
+}
+
+.right{
+  min-height:100vh;
+  display:flex;
+  background-color:rgb(255, 148, 214);
+  width:85%;
 }

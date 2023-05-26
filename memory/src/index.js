@@ -11,8 +11,6 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <>
-        <a href="/work">作業中</a>
-        <a href="/">学習成果</a>
         {/* URLで画面遷移 */}
         <Routes>
           <Route exact path="/" element={<App />} />
