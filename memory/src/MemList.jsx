@@ -11,10 +11,20 @@ function MemList(props){
     return (
         <div>
             {mems.map((mem) => (
-                //mem.genre == "rean" &&
-                    <div key={mem.id}>
-                        <div>タイトル：{mem.name}  概要：{mem.memo} ジャンル:{mem.genre}<button onClick={() => handleDeleteClick(mem.id)}>削除</button></div>
+                <div key={mem.id} className="mem-item">
+                    <div class="mem-item-field">
+                        <div class="mem-title">{mem.name}</div><div class="mem-memo">{mem.memo}</div><div class="mem-genre">ジャンル:{mem.genre}</div>
+                        <br></br>
+                        <div class="mem-right">
+                            <button
+                            className="delete-button"
+                            onClick={() => handleDeleteClick(mem.id)}
+                            >
+                            削除
+                            </button>
+                        </div>
                     </div>
+                </div>
             ))}
         </div>
     )

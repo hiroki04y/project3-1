@@ -1,19 +1,235 @@
 .App {
-  text-align: left;
+  display: flex;
+  justify-content: center;
 }
 
-
+/* 左側メニュー */
 .left{
   min-height:100vh;
   display:flex;
-  background-color:aqua;
-  width:15%;
-  float:left;
+  /* background-color:aqua; */
+  width:200px;
+  position: fixed;
+  top:0px;
+  left:0px;
+  flex-flow: column;
+  box-shadow: 10px 0px 14px -11px #777777;
 }
 
-.right{
-  min-height:100vh;
-  display:flex;
-  background-color:rgb(255, 148, 214);
-  width:85%;
+.header-image{
+  height:auto;
 }
+
+
+/* メニューの各項目 */
+.menu{
+  height:60px;
+  display:flex;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 0px 14px -11px #777777;
+}
+
+.menu:hover {
+  background-color: #f9f9f9;
+}
+
+.menu-image{
+  width:40px;
+  height:40px;
+  margin:10px 10px 10px 10px;
+}
+
+
+
+.right {
+  height: 100vh;
+  flex-grow: 1;
+  position: fixed;
+  top: 0;
+  left: 200px; /* メニューの幅に合わせて調整 */
+  background-color: #f9f9f9;
+  width: calc(100% - 200px); /* メニューの幅に合わせて調整 */
+  overflow-y: auto;
+}
+
+.add-task input[type="text"],
+.add-task input[type="textarea"],
+.add-task select {
+  padding: 6px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0px 0px 15px -8px #777777;
+}
+
+.add-task input[type="text"]{
+  width:50%;
+  margin-right:10%;
+}
+
+.add-task input[type="textarea"]{
+  width:98%;
+  height:40px;
+  margin-bottom:20px;
+}
+
+.btfield{
+  width:100%;
+  text-align:right;
+}
+
+.addbutton {
+  padding: 10px 20px;
+  background-color: royalblue;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addbutton:hover {
+  background-color: #1565c0;
+}
+
+.add-task {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  min-width: 580px;
+  height: auto;
+  background-color: #f9f9f9;
+  margin-top: 20px;
+  box-shadow: 0px 0px 15px -5px #777777;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 3px 6px 6px 6px;
+  transition: transform 0.3s ease;
+  border:1px solid #c0c0c0;
+  border-radius:10px;
+}
+
+.add-task.open .toggle-button {
+  transform: rotate(360deg);
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.toggle-button svg {
+  width: 16px;
+  height: 16px;
+  fill: #666;
+}
+
+.memfield{
+  width:100%;
+  height:auto;
+  text-align:center;
+}
+
+.mem-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #bebebe;
+  border-radius: 5px;
+  width:70%;
+  min-width:600px;
+  margin-top:10px;
+  display: inline-block;
+  font-size:13px;
+}
+
+.mem-item-field{
+  width:100%;
+}
+
+.mem-title,
+.mem-memo,
+.memo-genre{
+  width:100%;
+  text-align:left
+}
+
+.mem-memo{
+  font-size:20px;
+}
+
+
+.mem-right{
+  width:15%;
+  display: inline-block;
+}
+
+.mem-item .delete-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* .App {
+  display: flex;
+  justify-content: center;
+}
+
+.left {
+  min-height: 100vh;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid red;
+}
+
+.header-image {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid red;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.menu:hover {
+  background-color: #f9f9f9;
+}
+
+.menu-image {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.menu p {
+  margin: 0;
+}
+
+.right {
+  min-height: 100vh;
+  flex-grow: 1;
+  background-color: #f9f9f9;
+}
+
+ */
