@@ -49,7 +49,7 @@
   position: fixed;
   top: 0;
   left: 200px; /* メニューの幅に合わせて調整 */
-  background-color: #f9f9f9;
+  background-color: #ececec;
   width: calc(100% - 200px); /* メニューの幅に合わせて調整 */
   overflow-y: auto;
 }
@@ -142,8 +142,8 @@
 
 .mem-item {
   margin-bottom: 10px;
-  padding: 10px;
-  background-color: #bebebe;
+  padding-bottom: 10px;
+  background-color: #ffffff;
   border-radius: 5px;
   width:70%;
   min-width:600px;
@@ -157,30 +157,53 @@
 }
 
 .mem-title,
-.mem-memo,
-.memo-genre{
-  width:100%;
+.mem-memo{
   text-align:left
 }
 
+.mem-info {
+  display: flex;
+  align-items: center;
+}
+
+.mem-genre{
+  width:60px;
+  height:30px;
+  padding-top:4px;
+  font-size:15px;
+  font-weight: 800;
+  background-color:rgb(152, 255, 255);
+  border-top-left-radius: 5px;
+  margin-right: 10px;
+}
+
+
 .mem-memo{
   font-size:20px;
+  padding:10px;
+  margin-bottom:10px;
 }
 
 
 .mem-right{
-  width:15%;
+  width:100%;
   display: inline-block;
 }
 
-.mem-item .delete-button {
+.mem-item .delete-button,
+.mem-item .comp-button{
   margin-left: 10px;
+  margin-right:10px;
   padding: 5px 10px;
   background-color: #ff0000;
   color: #fff;
   border: none;
   border-radius: 3px;
   cursor: pointer;
+}
+
+.mem-item .comp-button {
+  background-color: #18fc5c;
 }
 
 /* .App {
