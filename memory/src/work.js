@@ -1,6 +1,6 @@
 //タスクの追加
 import './App.css';
-import MemList from './MemList';
+import WorkList from './WorkList';
 import { useState, useRef, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -39,7 +39,7 @@ const Work = ({ setMenuCompBackgroundColor }) => {
 
   return (
     <div className="right">
-        <MemList mems={mems} onDeleteMemory={handleDeleteMemory}/>
+        <WorkList mems={mems} onDeleteMemory={handleDeleteMemory}/>
     </div>
   );
 };

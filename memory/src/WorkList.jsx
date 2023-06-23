@@ -10,21 +10,18 @@ function formatDate(dateString) {
     return `${year}-${month}-${day}`;
 }
 
-function MemList(props){
+function WorkList(props){
     const { mems, onDeleteMemory, onTogglecheck } = props;
 
     const handleDeleteClick = (item) => {
         onDeleteMemory(item);
     }
 
-    const handleToggleCheck = (item) => {
-        onTogglecheck(item);
-    }
 
     return (
         <div>
             {mems.map((mem) => (
-                mem.check === true ? (
+                mem.check === false ? (
                     <div key={mem.id} className="mem-item">
                         <div className="mem-item-field">
                             <div className="mem-info">
@@ -36,11 +33,6 @@ function MemList(props){
                             </div>
                             <div className="mem-memo">{mem.memo}</div>
                             <div className="mem-right">
-                                <button
-                                className="comp-button"
-                                onClick={() => handleToggleCheck(mem.id)}>
-                                完了
-                                </button>
                                 <button
                                 className="delete-button"
                                 onClick={() => handleDeleteClick(mem.id)}>
@@ -56,4 +48,4 @@ function MemList(props){
 }
 
 
-export default MemList
+export default WorkList

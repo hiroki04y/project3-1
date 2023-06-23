@@ -1,12 +1,13 @@
 import './App.css';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import './index.css';
 import Memory from './memory';
 import Work from './work';
 import { useState } from "react";
 
+// ページのメイン部分。Routesの中に各ページを挿入。
+//親要素はindex.js
 
 function App() {
   const [menuNowBackgroundColor, setMenuNowBackgroundColor] = useState('');
@@ -31,6 +32,8 @@ function App() {
             </a>
           </div>
           {/* URLで画面遷移 */}
+          {/* urlが無し、または / の場合 == memory.js */}
+          {/* urlが /work の場合 == work.js */}
           <Routes>
             <Route exact path="/" element={<Memory setMenuNowBackgroundColor={setMenuNowBackgroundColor}/>} />
             <Route exact path="/work" element={<Work setMenuCompBackgroundColor={setMenuCompBackgroundColor}/>} />

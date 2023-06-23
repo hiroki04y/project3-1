@@ -15,6 +15,15 @@ import { v4 as uuidv4 } from "uuid";
 //   getItem();
 // };
 
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = ("0" + (date.getMonth() + 1)).slice(-2);
+    const day = ("0" + date.getDate()).slice(-2);
+
+    return `${year}-${month}-${day}`;
+}
+
 
 function Memory({ setMenuNowBackgroundColor }) {
     //表示用の配列を宣言
@@ -32,7 +41,8 @@ function Memory({ setMenuNowBackgroundColor }) {
             let memo = itemJson.memo;
             let date = itemJson.now;
             let genre = itemJson.genre;
-            tmp.push({id: key, name: name, memo: memo, date:date, genre:genre});
+            let check = itemJson.check;
+            tmp.push({id: key, name: name, memo: memo, date:date, genre:genre, check:check});
         }
         }
         let result = tmp.sort(function(a, b) {
@@ -58,14 +68,15 @@ function Memory({ setMenuNowBackgroundColor }) {
 
         //memsに値をセットする(ホットリロード)
         setMems((prevMems) => {
-        return [...prevMems, {id: uid, name: name, memo: memo, now: now, genre: genre, check: true}];
+        return [...prevMems, {id: uid, name: name, memo: memo, data: now, genre: genre, check: true}];
         });
 
         //取得したデータをJSON形式に変換
         const item = {
+        id: uid,
         name: name,
         memo: memo,
-        now: now,
+        data: now,
         genre: genre,
         check: true,
         };
@@ -83,6 +94,20 @@ function Memory({ setMenuNowBackgroundColor }) {
         current.filter((mem) => mem.id !== item)
         );
         localStorage.removeItem(item);
+    };
+
+    //完了ボタンが押されたときの処理
+    const handleToggleCheck = (item) => {
+        setMems((current) =>
+            current.map((mem) => {
+                if (mem.id === item) {
+                    const updatedMem = { ...mem, check: !mem.check };
+                    localStorage.setItem(item, JSON.stringify(updatedMem));
+                    return updatedMem;
+                }
+                return mem;
+            })
+        );
     };
 
     //タスク追加fieldの開け閉め
@@ -111,13 +136,13 @@ function Memory({ setMenuNowBackgroundColor }) {
                     <br></br>
                     一言メモ: <input type="textarea" ref={memoNameRef} row="2" />
                     <br></br>
-                    <div class="btfield">
-                        <button class="addbutton" onClick={handleAddMemory}>追加</button>
+                    <div className="btfield">
+                        <button className="addbutton" onClick={handleAddMemory}>追加</button>
                     </div>
                     </>
                 )}
             </div>
-            <div class="memfield"><MemList mems={mems} onDeleteMemory={handleDeleteMemory}/></div>
+            <div className="memfield"><MemList mems={mems} onDeleteMemory={handleDeleteMemory} onTogglecheck={handleToggleCheck}/></div>
         </div>
     );
 }
