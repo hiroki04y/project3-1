@@ -27,7 +27,7 @@ function Memory({ setMenuNowBackgroundColor }) {
         for (let i = 0, length = localStorage.length; i < length; ++i) {
         let key = localStorage.key(i)
         let itemJson = JSON.parse(localStorage.getItem(key)); //jsonのオブジェクトの各要素を取得
-        if (itemJson.check == true){
+        if (itemJson.check === true){
             let name = itemJson.name;
             let memo = itemJson.memo;
             let date = itemJson.now;

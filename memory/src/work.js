@@ -1,51 +1,3 @@
-//カレンダー　表示用
-// import React from 'react';
-// import FullCalendar from '@fullcalendar/react';
-// import dayGridPlugin from '@fullcalendar/daygrid';
-// import timeGridPlugin from '@fullcalendar/timegrid'; // 追加
-// import jaLocale from '@fullcalendar/core/locales/ja';
-
-// class Work extends React.Component {   //page2クラスにReact.Componentを継承する
-//     render(){
-//         return (
-//             <div>
-//             <FullCalendar
-//                 plugins={[dayGridPlugin, timeGridPlugin]} // 追加
-//                 initialView="dayGridMonth"
-//                 locales={[jaLocale]}
-//                 locale='ja'
-//                 headerToolbar={{                          // 追加
-//                     left: 'prev,next today',
-//                     center: 'title',
-//                     right: 'dayGridMonth,timeGridWeek',
-//                 }}
-//                 events={[
-//                     {title:'eventを', start: '2023-05-14'},
-//                     {title:'こんな感じで追加できます', start: '2023-05-15', end: '2023-05-17'}
-//                 ]}
-//             />
-//             </div>
-//         );
-//     }
-// }
-
-// export default Work;  
-
-
-//ミニカレンダー（入力用）
-// import DatePicker from "react-datepicker"
-// import "react-datepicker/dist/react-datepicker.css"
-// import { useState, useRef, useEffect } from "react";
-
-// const Work = () => {
-//     const [startDate, setStartDate] = useState(new Date());
-//     return (
-//       <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-//     );
-// };
-
-// export default Work;
-
 //タスクの追加
 import './App.css';
 import MemList from './MemList';
@@ -63,7 +15,7 @@ const Work = ({ setMenuCompBackgroundColor }) => {
     for (let i = 0, length = localStorage.length; i < length; ++i) {
       let key = localStorage.key(i)
       let itemJson = JSON.parse(localStorage.getItem(key)); //jsonのオブジェクトの各要素を取得
-      if (itemJson.check == false){
+      if (itemJson.check === false){
         let name = itemJson.name;
         let memo = itemJson.memo;
         let date = itemJson.now;
@@ -91,5 +43,7 @@ const Work = ({ setMenuCompBackgroundColor }) => {
     </div>
   );
 };
+
+
 
 export default Work;

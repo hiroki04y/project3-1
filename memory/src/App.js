@@ -13,6 +13,7 @@ function App() {
   const [menuCompBackgroundColor, setMenuCompBackgroundColor] = useState('');
 
   return (
+    // 左のメニュー部分
     <div className="App">
           <div className="left">
             <img className="header-image" src={`${process.env.PUBLIC_URL}/header.jpg`} alt="Header" />
@@ -23,6 +24,10 @@ function App() {
             <a href="/work" className="menu" style={{ backgroundColor: menuCompBackgroundColor }}>
               <img className="menu-image" src={`${process.env.PUBLIC_URL}/check.png`} alt="Icon" />
               <p>学習成果</p>
+            </a>
+            <a href="/mypage" className="menu" style={{ backgroundColor: menuCompBackgroundColor }}>
+              <img className="menu-image" src={`${process.env.PUBLIC_URL}/check.png`} alt="Icon" />
+              <p>マイページ</p>
             </a>
           </div>
           {/* URLで画面遷移 */}
